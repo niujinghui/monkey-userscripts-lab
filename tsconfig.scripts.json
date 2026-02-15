@@ -31,7 +31,7 @@
     "include": [
         "scripts/**/*.ts",
         "scripts/**/*.tsx",
-        "shared/**/*.ts",
-        "shared/**/*.tsx"
+        "shared/**/*.tsx",
+        "vite-env.d.ts"
     ]
 }

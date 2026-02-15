@@ -1,0 +1,27 @@
+.button {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 999999;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background: #333;
+}
+
+.enabled {
+  background: #2a7fff;
+}
+
+.enabled:hover {
+  background: #1a6fe0;
+}
