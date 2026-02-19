@@ -1,0 +1,15 @@
+{
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.userscript.json"
+        },
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

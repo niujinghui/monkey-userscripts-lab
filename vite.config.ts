@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { defineConfig } from "vite";
 import monkey from "vite-plugin-monkey";
 import react from "@vitejs/plugin-react";
@@ -39,11 +39,11 @@ export default defineConfig(async () => {
     );
   }
 
-  const entry = path.join(SCRIPTS_DIR, target, "main.js");
-  const metaPath = path.join(SCRIPTS_DIR, target, "meta.js");
+  const entry = path.join(SCRIPTS_DIR, target, "main.ts");
+  const metaPath = path.join(SCRIPTS_DIR, target, "meta.ts");
 
-  assertFileExists(entry, "Entry file (main.js)");
-  assertFileExists(metaPath, "Metadata file (meta.js)");
+  assertFileExists(entry, "Entry file (main.ts)");
+  assertFileExists(metaPath, "Metadata file (meta.ts)");
 
   const metaModule = await import(metaPath);
   const meta = metaModule.default;
@@ -55,13 +55,18 @@ export default defineConfig(async () => {
         entry,
         userscript: meta,
         build: {
-          fileName: () => `${target}.user.js`,
+          fileName: `${target}.user.js`,
         },
       }),
     ],
     build: {
       sourcemap: true,
       emptyOutDir: false,
+    },
+    resolve: {
+      alias: {
+        "@shared": path.resolve(__dirname, "shared"),
+      },
     },
   };
 });

@@ -1,8 +1,8 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
-import { Panel } from "../../shared/ui/Panel"
+import { App } from "./App"
 
 const container = document.createElement("div")
 document.body.appendChild(container)
 
-createRoot(container).render(<Panel />)
+createRoot(container).render(React.createElement(App))
