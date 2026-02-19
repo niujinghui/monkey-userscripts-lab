@@ -29,7 +29,9 @@ export default defineConfig(async () => {
 
   if (!target) {
     throw new Error(
-      `TARGET_USERSCRIPT is required. Available scripts: ${scripts.join(", ")}`
+      `TARGET_USERSCRIPT is required.\n\n` +
+      `Usage: TARGET_USERSCRIPT=<script_name> npm run build\n\n` +
+      `Available scripts:\n  ${scripts.join("\n  ")}`
     );
   }
 
@@ -45,7 +47,11 @@ export default defineConfig(async () => {
   assertFileExists(entry, "Entry file (main.ts)");
   assertFileExists(metaPath, "Metadata file (meta.ts)");
 
-  const metaModule = await import(metaPath);
+  // Use jiti to load TypeScript files (meta.ts) in the Node.js environment
+  // since Node.js doesn't natively support importing .ts files.
+  const { createJiti } = await import("jiti");
+  const jiti = createJiti(import.meta.url);
+  const metaModule = await jiti.import(metaPath) as { default: any };
   const meta = metaModule.default;
 
   return {
