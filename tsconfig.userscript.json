@@ -9,7 +9,8 @@
             "ES2022"
         ],
         "types": [
-            "vite/client"
+            "vite/client",
+            "vite-plugin-monkey/client"
         ],
         "jsx": "react-jsx",
         "strict": true,

@@ -63,6 +63,7 @@ export default defineConfig(async () => {
         build: {
           fileName: `${target}.user.js`,
         },
+        clientAlias: 'monkey',
       }),
     ],
     build: {
