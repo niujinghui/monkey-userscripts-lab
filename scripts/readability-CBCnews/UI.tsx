@@ -1,11 +1,11 @@
 import React from "react";
 import { ReaderModeButton } from "@shared/UI/reader-mode-button";
 
-interface AppProps {
+interface UIProps {
     isReaderMode: boolean;
     onToggle: () => void;
 }
 
-export const App = ({ isReaderMode, onToggle }: AppProps) => {
+export const UI = ({ isReaderMode, onToggle }: UIProps) => {
     return <ReaderModeButton enabled={isReaderMode} onClick={onToggle} />;
 };
